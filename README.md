@@ -1,21 +1,28 @@
-# ?? Website Portofolio
+# Zeref | Portofolio Digital
 
-Website portofolio modern, estetik, dan responsif.  
-Dibuat dengan HTML + Tailwind CSS + JavaScript.  
+Portofolio pribadi Zeref, kreator digital & developer. Dibangun dengan *HTML* dan *Tailwind CSS. Tema gelap elegan dengan efek interaktif saat scroll menggunakan **ScrollReveal*.
 
-## ? Fitur Utama
-- ?? Dark Mode Toggle  
-- ? Loading Screen Animasi  
-- ?? Efek Animasi Scroll (fade-in, tilt 3D, typing effect)  
-- ?? Statistik Counter  
-- ?? Timeline Proses Kerja (vertikal animasi)  
-- ?? Blog/Artikel Section  
-- ? FAQ Accordion  
-- ?? Newsletter Subscription di Footer  
-- ?? WhatsApp Floating Button  
-- ?? Desain full responsif  
+---
 
-## ?? Cara Menjalankan
-1. Download atau clone repository ini:
-   ```bash
-   git clone https://github.com/hidayat-0429/my-website.git
+## Fitur
+
+- Hero section cinematic dengan gradient teks
+- About, Proses Kerja, Blog, FAQ, dan Contact form
+- Card interaktif dengan hover & animasi masuk saat scroll
+- Footer dengan GitHub, Instagram, dan WhatsApp
+
+---
+
+## Teknologi
+
+- HTML5  
+- Tailwind CSS  
+- ScrollReveal.js
+
+---
+
+## Cara Menjalankan
+
+1. Clone repository:
+```bash
+git clone https://github.com/hidayat-0429/my-website.git

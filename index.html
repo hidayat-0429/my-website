@@ -3,208 +3,185 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Website Portofolio</title>
+  <title>Zeref | Portofolio Cinematic</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/scrollreveal"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script src="https://cdn.jsdelivr.net/npm/countup.js@2.6.2/dist/countUp.umd.js"></script>
-</head>
-<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+  <style>
+    body {
+      background: linear-gradient(135deg, #0b0b1e, #1c1733, #0b0b1e);
+      color: #e5e7eb;
+      font-family: sans-serif;
+      overflow-x: hidden;
+    }
 
-  <!-- Loading Screen -->
-  <div id="loader" class="fixed inset-0 bg-white dark:bg-gray-900 flex items-center justify-center z-50">
-    <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
-  </div>
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+
+    .btn-hover {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .btn-hover:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    .animated-gradient {
+      background: linear-gradient(90deg, #4f46e5, #6366f1, #8b5cf6, #ec4899, #f472b6);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 6s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Hero blur & overlay */
+    .hero-bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0b0b1e, #1c1733, #0b0b1e);
+      filter: blur(8px);
+      z-index: -1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
+
+  </style>
+</head>
+<body class="text-gray-200">
 
   <!-- Navbar -->
-  <header class="fixed w-full bg-white/70 dark:bg-gray-800/70 backdrop-blur z-40 shadow">
+  <header class="fixed w-full bg-gray-900/80 backdrop-blur z-40 shadow-lg border-b border-gray-800 transition-colors duration-500">
     <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
-      <h1 class="text-xl font-bold">Portofolio</h1>
-      <nav class="space-x-4">
-        <a href="#about" class="hover:text-blue-500">Tentang</a>
-        <a href="#process" class="hover:text-blue-500">Proses</a>
-        <a href="#blog" class="hover:text-blue-500">Blog</a>
-        <a href="#faq" class="hover:text-blue-500">FAQ</a>
-        <a href="#contact" class="hover:text-blue-500">Kontak</a>
+      <div class="flex items-center space-x-2">
+        <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold rounded-full w-10 h-10 flex items-center justify-center shadow-lg">Z</div>
+        <span class="text-xl font-bold animated-gradient">Zeref</span>
+      </div>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#about" class="hover:text-blue-400 transition">Tentang</a>
+        <a href="#process" class="hover:text-blue-400 transition">Proses</a>
+        <a href="#blog" class="hover:text-blue-400 transition">Blog</a>
+        <a href="#faq" class="hover:text-blue-400 transition">FAQ</a>
+        <a href="#contact" class="hover:text-blue-400 transition">Kontak</a>
       </nav>
-      <button id="darkToggle" class="ml-4">??</button>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-r from-blue-500 to-purple-600 text-white">
-    <h2 class="text-4xl font-bold mb-4">Halo ?? Saya <span class="text-yellow-300">Developer</span></h2>
-    <h3 class="text-xl" id="typed"></h3>
-  </section>
-
-  <!-- Tentang Kami -->
-  <section id="about" class="max-w-6xl mx-auto py-20 px-6">
-    <h2 class="text-3xl font-bold mb-8 text-center">Tentang Kami</h2>
-    <p class="text-center mb-8">Kami adalah tim developer yang fokus pada pembuatan website modern, elegan, dan responsif.</p>
-    <div class="grid md:grid-cols-3 gap-6 text-center">
-      <div>
-        <h3 class="text-4xl font-bold text-blue-500 counter" data-count="120">0</h3>
-        <p>Proyek Selesai</p>
-      </div>
-      <div>
-        <h3 class="text-4xl font-bold text-blue-500 counter" data-count="80">0</h3>
-        <p>Klien Puas</p>
-      </div>
-      <div>
-        <h3 class="text-4xl font-bold text-blue-500 counter" data-count="5">0</h3>
-        <p>Tahun Pengalaman</p>
-      </div>
+  <section class="h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
+    <div class="hero-bg"></div>
+    <div class="hero-content sr-hero">
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-4 animated-gradient">
+        Halo, saya Zeref
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl mb-6 text-gray-400">Seorang kreator digital & developer yang suka bereksperimen dengan desain dan teknologi modern.</p>
+      <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg btn-hover">Hubungi Saya</a>
     </div>
   </section>
 
-  <!-- Proses Kerja -->
-  <section id="process" class="bg-gray-100 dark:bg-gray-800 py-20 px-6">
-    <h2 class="text-3xl font-bold text-center mb-12">Proses Kerja Kami</h2>
-    <div class="relative max-w-3xl mx-auto">
-      <div class="border-l-4 border-blue-500 absolute h-full left-1/2 transform -translate-x-1/2"></div>
-      <div class="space-y-12">
-        <div class="relative">
-          <div class="bg-white dark:bg-gray-700 shadow p-6 rounded-xl w-5/12 ml-auto">
-            <h3 class="font-bold">1. Konsultasi</h3>
-            <p>Kami memahami kebutuhan anda terlebih dahulu.</p>
-          </div>
+  <!-- About -->
+  <section id="about" class="max-w-5xl mx-auto py-20 px-4 text-center">
+    <h2 class="text-3xl font-bold mb-6 text-center animated-gradient sr-section">Tentang Saya</h2>
+    <p class="text-lg text-center leading-relaxed text-gray-400 sr-section">Saya fokus membangun aplikasi modern dengan desain yang clean dan pengalaman pengguna yang nyaman. Portofolio ini adalah tempat saya berbagi karya, ide, dan perjalanan.</p>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="py-20 px-4" style="background: linear-gradient(135deg, #0c0c1f, #211a3a);">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold mb-10 text-center animated-gradient sr-section">Proses Kerja</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-6 bg-gray-800 rounded-2xl shadow-lg card-hover sr-card">
+          <h3 class="text-xl font-semibold mb-2 text-blue-400">1. Ide</h3>
+          <p class="text-gray-400">Mengumpulkan inspirasi dan memahami kebutuhan.</p>
         </div>
-        <div class="relative">
-          <div class="bg-white dark:bg-gray-700 shadow p-6 rounded-xl w-5/12 mr-auto">
-            <h3 class="font-bold">2. Desain</h3>
-            <p>Membuat desain UI/UX sesuai identitas brand.</p>
-          </div>
+        <div class="p-6 bg-gray-800 rounded-2xl shadow-lg card-hover sr-card">
+          <h3 class="text-xl font-semibold mb-2 text-purple-400">2. Desain</h3>
+          <p class="text-gray-400">Membuat tampilan yang modern, responsif, dan user-friendly.</p>
         </div>
-        <div class="relative">
-          <div class="bg-white dark:bg-gray-700 shadow p-6 rounded-xl w-5/12 ml-auto">
-            <h3 class="font-bold">3. Pengembangan</h3>
-            <p>Membangun website dengan teknologi modern.</p>
-          </div>
-        </div>
-        <div class="relative">
-          <div class="bg-white dark:bg-gray-700 shadow p-6 rounded-xl w-5/12 mr-auto">
-            <h3 class="font-bold">4. Peluncuran</h3>
-            <p>Website siap digunakan dan online.</p>
-          </div>
-        </div>
-        <div class="relative">
-          <div class="bg-white dark:bg-gray-700 shadow p-6 rounded-xl w-5/12 ml-auto">
-            <h3 class="font-bold">5. Support</h3>
-            <p>Dukungan berkelanjutan untuk klien.</p>
-          </div>
+        <div class="p-6 bg-gray-800 rounded-2xl shadow-lg card-hover sr-card">
+          <h3 class="text-xl font-semibold mb-2 text-pink-400">3. Build</h3>
+          <p class="text-gray-400">Mengubah desain menjadi produk nyata dengan teknologi web.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Blog -->
-  <section id="blog" class="max-w-6xl mx-auto py-20 px-6">
-    <h2 class="text-3xl font-bold text-center mb-12">Blog & Artikel</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white dark:bg-gray-700 shadow rounded-xl overflow-hidden">
-        <img src="https://source.unsplash.com/400x250/?technology" alt="">
-        <div class="p-4">
-          <h3 class="font-bold">Tren Web 2025</h3>
-          <p class="text-sm">Mengulas perkembangan terbaru dalam dunia web.</p>
-        </div>
-      </div>
-      <div class="bg-white dark:bg-gray-700 shadow rounded-xl overflow-hidden">
-        <img src="https://source.unsplash.com/400x250/?design" alt="">
-        <div class="p-4">
-          <h3 class="font-bold">UI/UX Modern</h3>
-          <p class="text-sm">Tips desain antarmuka yang user-friendly.</p>
-        </div>
-      </div>
-      <div class="bg-white dark:bg-gray-700 shadow rounded-xl overflow-hidden">
-        <img src="https://source.unsplash.com/400x250/?developer" alt="">
-        <div class="p-4">
-          <h3 class="font-bold">Tips Developer</h3>
-          <p class="text-sm">Cara kerja efisien bagi programmer modern.</p>
-        </div>
-      </div>
+  <section id="blog" class="max-w-5xl mx-auto py-20 px-4">
+    <h2 class="text-3xl font-bold mb-6 text-center animated-gradient sr-section">Blog</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <article class="p-6 bg-gray-800 rounded-2xl shadow-lg card-hover sr-card">
+        <h3 class="text-xl font-semibold mb-2 text-blue-400">Tips Desain Clean</h3>
+        <p class="text-gray-400">Cara membuat desain yang minimalis tapi tetap menarik.</p>
+      </article>
+      <article class="p-6 bg-gray-800 rounded-2xl shadow-lg card-hover sr-card">
+        <h3 class="text-xl font-semibold mb-2 text-purple-400">Belajar Frontend</h3>
+        <p class="text-gray-400">Dasar-dasar membangun website modern dengan HTML, CSS, JS.</p>
+      </article>
+      <article class="p-6 bg-gray-800 rounded-2xl shadow-lg card-hover sr-card">
+        <h3 class="text-xl font-semibold mb-2 text-pink-400">Teknologi Baru</h3>
+        <p class="text-gray-400">Mengulas tools dan framework terbaru untuk developer.</p>
+      </article>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="bg-gray-100 dark:bg-gray-800 py-20 px-6">
-    <h2 class="text-3xl font-bold text-center mb-12">FAQ</h2>
-    <div class="max-w-3xl mx-auto space-y-4">
-      <div class="bg-white dark:bg-gray-700 rounded-lg shadow">
-        <button class="w-full text-left p-4 font-bold toggle">Apa layanan utama kalian?</button>
-        <div class="hidden p-4 border-t">Kami fokus pada pembuatan website modern dan responsif.</div>
-      </div>
-      <div class="bg-white dark:bg-gray-700 rounded-lg shadow">
-        <button class="w-full text-left p-4 font-bold toggle">Apakah mendukung SEO?</button>
-        <div class="hidden p-4 border-t">Ya, semua project sudah dioptimasi untuk SEO.</div>
-      </div>
-      <div class="bg-white dark:bg-gray-700 rounded-lg shadow">
-        <button class="w-full text-left p-4 font-bold toggle">Bagaimana cara memesan?</button>
-        <div class="hidden p-4 border-t">Hubungi kami lewat form kontak atau WhatsApp.</div>
+  <section id="faq" class="py-20 px-4" style="background: linear-gradient(135deg, #0c0c1f, #211a3a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-center animated-gradient sr-section">FAQ</h2>
+      <div class="space-y-4">
+        <details class="p-4 bg-gray-800 rounded-2xl shadow card-hover sr-card">
+          <summary class="font-semibold cursor-pointer text-blue-400">Apakah bisa bekerja remote?</summary>
+          <p class="mt-2 text-gray-400">Ya, saya terbuka untuk project remote maupun kolaborasi online.</p>
+        </details>
+        <details class="p-4 bg-gray-800 rounded-2xl shadow card-hover sr-card">
+          <summary class="font-semibold cursor-pointer text-purple-400">Skill utama?</summary>
+          <p class="mt-2 text-gray-400">Frontend development, UI/UX design, dan eksperimen dengan animasi web.</p>
+        </details>
       </div>
     </div>
   </section>
 
-  <!-- Kontak -->
-  <section id="contact" class="max-w-4xl mx-auto py-20 px-6 text-center">
-    <h2 class="text-3xl font-bold mb-6">Kontak Kami</h2>
-    <form class="space-y-4">
-      <input type="text" placeholder="Nama" class="w-full p-3 border rounded-lg">
-      <input type="email" placeholder="Email" class="w-full p-3 border rounded-lg">
-      <textarea placeholder="Pesan" class="w-full p-3 border rounded-lg"></textarea>
-      <button class="bg-blue-500 text-white px-6 py-3 rounded-lg">Kirim</button>
+  <!-- Contact -->
+  <section id="contact" class="max-w-4xl mx-auto py-20 px-4 text-center">
+    <h2 class="text-3xl font-bold mb-6 animated-gradient sr-section">Kontak</h2>
+    <p class="mb-6 text-gray-400 sr-section">Tertarik berkolaborasi atau sekadar ngobrol? Silakan hubungi saya melalui form berikut:</p>
+    <form class="space-y-4 sr-section">
+      <input type="text" placeholder="Nama" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+      <input type="email" placeholder="Email" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+      <textarea placeholder="Pesan" class="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" rows="4" required></textarea>
+      <button class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg btn-hover">Kirim</button>
     </form>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-200 py-10">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-      <p>&copy; 2025 Portofolio. All rights reserved.</p>
-      <form class="flex space-x-2">
-        <input type="email" placeholder="Masukkan email" class="p-2 rounded-lg text-black">
-        <button class="bg-blue-500 px-4 py-2 rounded-lg">Berlangganan</button>
-      </form>
+  <footer class="bg-gray-950 text-gray-400 py-6 text-center border-t border-gray-800">
+    <div class="flex justify-center space-x-6 mb-4">
+      <a href="https://github.com/hidayat-0429" target="_blank" class="hover:text-blue-400 transition">GitHub</a>
+      <a href="https://instagram.com/zeref_04" target="_blank" class="hover:text-pink-400 transition">Instagram</a>
+      <a href="https://wa.me/6285816172367" target="_blank" class="hover:text-green-400 transition">WhatsApp</a>
     </div>
+    <p class="text-sm">© 2025 Zeref. All rights reserved.</p>
   </footer>
 
-  <!-- WhatsApp Floating -->
-  <a href="https://wa.me/6285816172367" target="_blank" class="fixed bottom-5 right-5 bg-green-500 p-4 rounded-full shadow-lg text-white">??</a>
-
   <script>
-    // Loader
-    window.addEventListener('load', () => {
-      document.getElementById('loader').style.display = 'none';
-    });
-
-    // Dark Mode
-    const toggle = document.getElementById('darkToggle');
-    toggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-    });
-
-    // Typed.js
-    new Typed('#typed', {
-      strings: ['Membuat Website Modern', 'Desain Elegan', 'Responsif & SEO Friendly'],
-      typeSpeed: 50,
-      backSpeed: 30,
-      loop: true
-    });
-
-    // Counter
-    const counters = document.querySelectorAll('.counter');
-    counters.forEach(counter => {
-      const update = new CountUp(counter, counter.dataset.count);
-      if (!update.error) update.start();
-    });
-
-    // ScrollReveal
-    ScrollReveal().reveal('section', { distance: '50px', duration: 1000, easing: 'ease-out', origin: 'bottom' });
-
-    // FAQ toggle
-    document.querySelectorAll('.toggle').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.nextElementSibling.classList.toggle('hidden');
-      });
-    });
+    // Scroll reveal efek masuk
+    ScrollReveal().reveal('.sr-card', { duration: 800, distance: '20px', easing: 'ease-in-out', origin: 'bottom', interval: 200 });
+    ScrollReveal().reveal('.sr-section', { duration: 800, distance: '20px', scale: 0.95, easing: 'ease-in-out', origin: 'bottom', interval: 100 });
+    ScrollReveal().reveal('.sr-hero', { duration: 1000, distance: '40px', scale: 0.9, easing: 'ease-in-out', origin: 'bottom', interval: 200 });
   </script>
 </body>
 </html>
