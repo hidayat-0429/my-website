@@ -18,4 +18,4 @@ Dibuat dengan HTML + Tailwind CSS + JavaScript.
 ## ?? Cara Menjalankan
 1. Download atau clone repository ini:
    ```bash
-   git clone https://hidayat-0429.github.io/my-website/
+    https://hidayat-0429.github.io/my-website/
